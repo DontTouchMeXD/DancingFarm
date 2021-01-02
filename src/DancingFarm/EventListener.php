@@ -54,7 +54,7 @@ class EventListener implements Listener{
     public function grow($block): void {
         if($block instanceof Sapling){
             if(!$this->cfg->get("tree_grow")) return;
-            $chance = $this->cfg->get("tree_grow_chance");
+            $chance = $this->cfg->get("tree_chance");
             if($chance > 10){
                 $chance = 10; 
             }
@@ -65,6 +65,7 @@ class EventListener implements Listener{
         }
         if($block instanceof Crops){
             if(!$this->cfg->get("crops_grow")) return; 
+            if(!in_array($block->getId(), $this->cfg->get("crops_list")) return;
             if($block->getDamage() >= 7) return;
             $random = mt_rand(2,5);
             $crops = clone $block;
