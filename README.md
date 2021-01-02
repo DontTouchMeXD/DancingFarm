@@ -10,5 +10,5 @@ just dance to make sapling and crops grow
 
 ## planned feature
 
-[] add configuration of any crops that can be grown by dancing
-[] add particle
+[x] add configuration of any crops that can be grown by dancing
+[x] add particle
