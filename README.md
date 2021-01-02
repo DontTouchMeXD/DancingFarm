@@ -2,11 +2,11 @@
 dancing to grown trees and crops
 
 ## Feature
-* [✓] costumizable config
-* [✓] configurable range 
-* [✓] configurable chance 
-* [✓] configurable crops list to be grown by dancing
+* [x] costumizable config
+* [x] configurable range 
+* [x] configurable chance 
+* [x] configurable crops list to be grown by dancing
 
 ## planned feature
 
-* [x] add particle
+* [] add particle
