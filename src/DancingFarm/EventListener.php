@@ -8,17 +8,35 @@ use pocketmine\block\{
 };
 use pocketmine\event\player\PlayerToggleSneakEvent; 
 use pocketmine\level\generator\object\Tree;
-use pocketmine\utils\Random; 
+use pocketmine\utils\{
+    Random,
+    Config
+}; 
 use pocketmine\event\Listener;
 use pocketmine\event\block\BlockGrowEvent;
 
 class EventListener implements Listener{
     
+    /** @var DancingFarm|$plugin */
+    public $plugin;
+    
+    /** @var Config|$cfg */
+    public $cfg;
+    
+    public function __construct(DancingFarm $plugin) {
+        $this->plugin = $plugin;
+        $this->cfg = $this->plugin->getConfig();
+    }
+    
     public function onSneak(PlayerToggleSneakEvent $event) {
         $player = $event->getPlayer();
         $isSneak = $event->isSneaking();
-        $start = $player->add(-1, 0, -1);
-        $end = $player->add(1, 0, 1);
+        $range = $this->cfg->get("range");
+        if($range > 10){
+            $range = 10; // prevent lag
+        }
+        $start = $player->add(-$range, 0, -$range);
+        $end = $player->add($range, 0, $range);
         if(!$isSneak){
             for($y = $start->y; $y <= $end->y; ++$y){
                 for($z = $start->z; $z <= $end->z; ++$z){
@@ -33,15 +51,21 @@ class EventListener implements Listener{
         }
     }
     
-    public function grow($block) : void {
-        if($block->getDamage() >= 7) return;
+    public function grow($block): void {
         if($block instanceof Sapling){
-            if(mt_rand(1,7) === 1){
+            if(!$this->cfg->get("tree_grow")) return;
+            $chance = $this->cfg->get("tree_grow_chance");
+            if($chance > 10){
+                $chance = 10; 
+            }
+            if(mt_rand($chance,10) === 1){
                 Tree::growTree($block->getLevelNonNull(), $block->x, $block->y, $block->z, new Random(mt_rand()), $block->getVariant());
             }
             return;
         }
         if($block instanceof Crops){
+            if(!$this->cfg->get("crops_grow")) return; 
+            if($block->getDamage() >= 7) return;
             $random = mt_rand(2,5);
             if($block->getDamage() < 7){
                 $crops = clone $block;
@@ -55,7 +79,6 @@ class EventListener implements Listener{
                     $block->getLevelNonNull()->setBlock($block, $ev->getNewState(), true, true);
                 }
             }
-            return;
         }
     }
 }
