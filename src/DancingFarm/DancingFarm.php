@@ -14,23 +14,23 @@ use pocketmine\event\block\BlockGrowEvent;
 
 class EventListener implements Listener{
     
-    public function onSneak(PlayerToggleSneakEvent $event) : void {
+    public function onSneak(PlayerToggleSneakEvent $event) {
         $player = $event->getPlayer();
         $isSneak = $event->isSneaking();
         $start = $player->add(-1, 0, -1);
-		$end = $player->add(1, 0, 1);
-		if(!$isSneak){
-		    for($y = $start->y; $y <= $end->y; ++$y){
-		        for($z = $start->z; $z <= $end->z; ++$z){
-		            for($x = $start->x; $x <= $end->x; ++$x){
-		                $block = $player->level->getBlockAt($x, $y, $z);
-		                if($block instanceof Crops or $block instanceof Sapling){
-		                    $this->grow($block);
-		                }
-					}
-				}
-			}
-		} 
+        $end = $player->add(1, 0, 1);
+        if(!$isSneak){
+            for($y = $start->y; $y <= $end->y; ++$y){
+                for($z = $start->z; $z <= $end->z; ++$z){
+                    for($x = $start->x; $x <= $end->x; ++$x){
+                        $block = $player->level->getBlockAt($x, $y, $z);
+                        if($block instanceof Crops or $block instanceof Sapling){
+                            $this->grow($block);
+                        }
+                    }
+                }
+            }
+        }
     }
     
     public function grow($block) : void {
