@@ -65,7 +65,7 @@ class EventListener implements Listener{
         }
         if($block instanceof Crops){
             if(!$this->cfg->get("crops_grow")) return; 
-            if(!in_array($block->getId(), $this->cfg->get("crops_list")) return;
+            if(!in_array($block->getId(), $this->cfg->get("crops_list"))) return;
             if($block->getDamage() >= 7) return;
             $random = mt_rand(2,5);
             $crops = clone $block;
