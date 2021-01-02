@@ -6,7 +6,7 @@ use pocketmine\plugin\PluginBase;
 
 class DancingFarm extends PluginBase {
     
-    public const CONFIG_VERSION = 1;
+    public const CONFIG_VERSION = 2;
     
     public function onEnable() : void {
         $this->saveDefaultConfig();
