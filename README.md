@@ -1,5 +1,5 @@
 # DancingFarm
-dancing to grown trees and crops
+dancing (sneaking) to grown trees and crops
 
 ## Feature
 * [x] costumizable config
