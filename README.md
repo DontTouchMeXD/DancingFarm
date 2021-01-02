@@ -9,4 +9,4 @@ dancing to grown trees and crops
 
 ## planned feature
 
-* [] add particle
+you can request planned feature to be added next update
