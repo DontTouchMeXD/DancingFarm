@@ -1,5 +1,6 @@
 # DancingFarm
 
-just dance to make tree and farm grow
+just dance to make sapling and crops grow 
+
 
 
