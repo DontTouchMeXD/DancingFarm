@@ -1,1 +1,9 @@
+# DONT TOUCH THIS 
+config_version: 1.0
 
+# range (1-10)
+# 1 = 3x3
+range: 1
+
+# chance to grow tree (1-10)
+tree_grow_chance: 2
