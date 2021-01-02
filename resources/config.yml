@@ -1,5 +1,5 @@
 # DONT TOUCH THIS 
-config_version: 1
+config_version: 2
 
 # enabling or disabling crops to be grown by dancing
 crops_grow: false
