@@ -1,7 +1,5 @@
 # DancingFarm
-
-just dance to make sapling and crops grow 
-
+just dance to make trees and crops grow 
 
 ## Feature
 - disable or enable dance to grow
