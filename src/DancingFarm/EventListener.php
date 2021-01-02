@@ -17,10 +17,10 @@ use pocketmine\event\block\BlockGrowEvent;
 
 class EventListener implements Listener{
     
-    /** @var DancingFarm|$plugin */
+    /** @var DancingFarm $plugin */
     public $plugin;
     
-    /** @var Config|$cfg */
+    /** @var Config $cfg */
     public $cfg;
     
     public function __construct(DancingFarm $plugin) {
@@ -67,17 +67,15 @@ class EventListener implements Listener{
             if(!$this->cfg->get("crops_grow")) return; 
             if($block->getDamage() >= 7) return;
             $random = mt_rand(2,5);
-            if($block->getDamage() < 7){
-                $crops = clone $block;
-                $crops->setDamage($block->getDamage() + $random);
-                if($crops->getDamage() > 7){
-                    $crops->setDamage(7);
-                }
-                $ev = new BlockGrowEvent($block, $crops);
-                $ev->call();
-                if(!$ev->isCancelled()){
-                    $block->getLevelNonNull()->setBlock($block, $ev->getNewState(), true, true);
-                }
+            $crops = clone $block;
+            $crops->setDamage($block->getDamage() + $random);
+            if($crops->getDamage() > 7){
+                $crops->setDamage(7);
+            }
+            $ev = new BlockGrowEvent($block, $crops);
+            $ev->call();
+            if(!$ev->isCancelled()){
+                $block->getLevelNonNull()->setBlock($block, $ev->getNewState(), true, true);
             }
         }
     }
