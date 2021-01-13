@@ -1,6 +1,10 @@
 # DancingFarm
 dancing (sneaking) to grown trees and crops
 
+[![](https://poggit.pmmp.io/shield.state/DancingFarm)](https://poggit.pmmp.io/p/DancingFarm)
+[![](https://poggit.pmmp.io/shield.api/DancingFarm)](https://poggit.pmmp.io/p/DancingFarm)
+[![](https://poggit.pmmp.io/shield.dl.total/DancingFarm)](https://poggit.pmmp.io/p/DancingFarm) [![](https://poggit.pmmp.io/shield.dl/DancingFarm)](https://poggit.pmmp.io/p/DancingFarm)
+
 ## Feature
 * [x] costumizable config
 * [x] configurable range 
